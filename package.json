@@ -1,0 +1,27 @@
+{
+  "name": "fooddelivery",
+  "version": "1.0.0",
+  "description": "Food Delivery App",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prabh-walia/Food-Delivery.git"
+  },
+  "author": "prabh walia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prabh-walia/Food-Delivery/issues"
+  },
+  "homepage": "https://github.com/prabh-walia/Food-Delivery#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
