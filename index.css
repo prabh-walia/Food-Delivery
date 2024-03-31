@@ -1,3 +1,78 @@
-#header {
-color:red
+* {
+    margin:0;
+    padding:0;
+}
+.header {
+height:5em;
+background-color: rgb(255, 255, 255);
+display: flex;
+}
+.logo {
+    width:4em;
+    height:4em;
+    padding:0.5em;
+    padding-left:4em
+}
+.LogoContainer {
+    width:50%;
+}
+.navItems {
+    padding-left:10em;
+}
+.navItems> ul {
+    display: flex;
+    list-style-type: none;
+
+}
+.navItems>ul>li {
+    margin:0.9em;
+    padding:0.9em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.Body {
+    height:100em;
+    background: #f1f1f1;
+    padding:4em;
+    padding-top:2em
+}
+.heading {
+    font-size: 1.5em;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.category {
+    height:15em;
+    padding-bottom:1em;
+    border-bottom: 1px solid #bebdbd;
+}
+.categoryImages {
+    display: flex;
+    margin-top: 1em;
+}
+.res-container {
+    height:auto;
+    padding-top:2em;
+
+    padding-bottom:2em;
+    border-bottom:1px solid #bebdbd;
+}
+.res-card {
+    width:18em;
+    height:22em;
+    border-radius:10%;
+    margin:1em;
+
+}
+.restaurant {
+    display: flex;
+    flex-wrap: wrap;
+  
+   margin-top: 1em;
+}
+.res-image {
+    width: 100%;
+    height:60%;
+   
+  
+  
 }
