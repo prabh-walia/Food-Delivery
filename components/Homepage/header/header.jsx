@@ -1,5 +1,5 @@
-import Logo from "./logo"
-import MenuItems from "./menuItems"
+import Logo from "./Logo"
+import MenuItems from "./MenuItems"
 export default Header= () =>{
 
 

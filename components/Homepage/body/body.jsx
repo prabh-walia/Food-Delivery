@@ -1,4 +1,5 @@
 import Category from "./Category"
+import Restaurants from "./Restaurants"
 import Restaurant from "./restaurant"
 
 export default Body=()=>{
@@ -7,7 +8,9 @@ export default Body=()=>{
         <div className="Body">
 
              <Category/>
-             <Restaurant/>
+             <Restaurants/>
+             {/* <Restaurant/> */}
+      
              
 
 
