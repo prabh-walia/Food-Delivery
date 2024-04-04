@@ -5,7 +5,7 @@ export default RestaurantCard=({restaurant,index,cdn})=>{
         height:"3em",
 
     }
-    console.log("res",restaurant);
+
 
     return (
 

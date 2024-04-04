@@ -1,6 +1,6 @@
 import Category from "./Category"
 import Restaurants from "./Restaurants"
-import Restaurant from "./restaurant"
+import Restaurant from "./Restaurant"
 
 export default Body=()=>{
 
