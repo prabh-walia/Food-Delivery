@@ -5,7 +5,7 @@ import Help from "./components/Help/Help";
 import { createBrowserRouter ,RouterProvider} from "react-router-dom";
 import Restaurants from "./components/Homepage/Restaurants";
 import Homepage from "./components/Homepage/Homepage";
-import RestaurantMenu from "./components/body/RestaurantMenu";
+import RestaurantMenu from "./components/body/Restaurant-View/RestaurantMenu";
 var number = 100
 
 
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             }
             ,
             {
-                path:"/restaurant/:res",
+                path:"/restaurant/:resId",
                 element : <RestaurantMenu/>
                 
             }

@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard"
 import Shimmer from "./shimmer"
 import filters from "./Filters"
 import Filters from "./Filters"
+import { Link } from "react-router-dom"
 
 export default Restaurants =()=>{
    const ImagesCDN ="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
@@ -54,6 +55,7 @@ export default Restaurants =()=>{
         const filteredRestaurants = Restaurants.filter((restaurant) =>
           restaurant.info.name.toLowerCase().includes(term.toLowerCase())
         );
+
         setFilteredRestaurant(filteredRestaurants);
       };
       
@@ -96,7 +98,8 @@ export default Restaurants =()=>{
         
      filteredRestaurants?.map((item,index)=>(
         <div>
-         <RestaurantCard restaurant = {item?.info} index={index} cdn={ImagesCDN}/>
+  
+        <Link  style={{textDecoration:"none"}} to={"/restaurant/"+item.info.id}> <RestaurantCard restaurant = {item?.info} index={index} cdn={ImagesCDN}/></Link>
         
         </div>
      ))
