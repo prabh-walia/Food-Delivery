@@ -54,7 +54,7 @@ export default Category =()=>{
     const [inc,setInc] = useState(0);
     return (
         <div className="category">
-            <div style={{display:"flex"}}>
+            <div className="flex">
             <div className="heading"> Whats on your mind ? </div>
             <div className="prev-next-buttons" >
 
@@ -63,11 +63,11 @@ export default Category =()=>{
 
             </div>
             </div>
-            <div className="categoryImages">
+            <div className="categoryImages gap-5">
            
               {
                categoryImages.slice(inc,inc+7).map((item,index)=>(
-                <div className="foodCategoryContainer" key={index}>
+                <div className="foodCategoryContainer  " key={index}>
                 <FoodCategory item ={item} index={index}/>
                 </div>
 
@@ -84,15 +84,11 @@ export default Category =()=>{
 
 const FoodCategory=(props)=>{
 
-    const style = {
-        width:"10em",
-        height:"10em",
-        padding:"0.9em"
-    }
+    
     return (
    
             
-            <div><img style={style} key={props.index}  src={props.item.file} alt="" /></div>
+            <div><img className=" h-40  w-44" key={props.index}  src={props.item.file} alt="" /></div>
    
     )
 }

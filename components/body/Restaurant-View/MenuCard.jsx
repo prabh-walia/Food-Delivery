@@ -18,7 +18,7 @@ export default MenuCard =(props)=>{
 
             </div>
             <div className="menu_img_section">
-                <img src={ImagesCDN+data?.card?.info?.imageId} alt=""  style={{width:"100%",height:"10em",borderRadius:"1em"}}/>
+                <img src={ImagesCDN+data?.card?.info?.imageId} alt=""  style={{width:"100%",height:"9em",borderRadius:"1em"}}/>
               <div className="submit" style={{background:"white",fontWeight:"600", color:"darkgreen",width:"7em",position:"relative",bottom:"2em",left:"15%",zIndex:"1",boxShadow: "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px"}}>
                   ADD
               </div>

@@ -3,31 +3,12 @@ import Deal from "./deal";
 import { useParams } from "react-router-dom";
 import Shimmer from "../../Homepage/shimmer";
 import MenuCard from "./MenuCard";
+import { useRestaurantMenu } from "../../../utils/data/useRestaurantMenu";
 export default RestaurantMenu =()=>{
 
-    const [resInfo,setResInfo]= useState({});
-    const [offers,setOffers]=useState([]);
     const { resId } = useParams()
+    const [resInfo,offers,setResInfo] = useRestaurantMenu(resId)
 
-    useEffect(()=>{
-     fetchData();
- 
-    },[])
-    useEffect(()=>{
-        console.log("resinfo=",resInfo );
-
-    },[resInfo])
-
-
-    fetchData= async ()=>{
-        let url = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.71700&lng=75.83370&restaurantId="+resId+"&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER";
-        const result = await fetch(url);
-        const json =await  result.json();
-
-        setResInfo(json);
-        setOffers(json?.data?.cards[3]?.card.card?.gridElements.infoWithStyle.offers)
-    }
-    
 
     return Object.keys(resInfo).length==0?<Shimmer/>:(
         <div style={{paddingLeft:"15em",paddingRight:"15em"}}>

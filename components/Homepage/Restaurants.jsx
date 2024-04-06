@@ -4,40 +4,33 @@ import Shimmer from "./shimmer"
 import filters from "./Filters"
 import Filters from "./Filters"
 import { Link } from "react-router-dom"
+import { ImagesCDN } from "../../utils/data/constants"
+import { useRestaurants } from "../../utils/data/useRestaurants"
+
+
 
 export default Restaurants =()=>{
-   const ImagesCDN ="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 
 
-    const [Restaurants,setRestaurant] = useState([])
-    const [filteredRestaurants,setFilteredRestaurant] = useState([])
+   const [Restaurants,setRestaurants] = useRestaurants();
+   const [filteredRestaurants,setFilteredRestaurant] = useRestaurants();
+  
     const [ searchterm,setSearch]=useState('');
     const [filterDialogOpen,setFilterDialog]=useState(false)
+console.log("filter",filteredRestaurants)
     const myMap = new Map();
     const [filters,setFilters]=useState({});
+
     myMap.set("Sort",["Rating","Delivery Time"])
     myMap.set("Cuisines",["Afghani","North Indian","Asian","Cafe","Briyani","Chinese","South Indian"])
     myMap.set("Ratings",["4.5+","4.0+","3.5+"])
-    const fetchData = async ()=>{
-        console.log("calling");
-      let res =  await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.71700&lng=75.83370&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
-       const json =await res.json();
-
-      setRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
-
-      setFilteredRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-      
-    }
     useEffect(()=>{
 
         search(searchterm);
       },[searchterm])
       
-      useEffect(()=>{
-
-      fetchData();
-      },[])
+ 
 
    const  filter=()=>{
        setFilterDialog(true)
@@ -65,7 +58,7 @@ export default Restaurants =()=>{
       
       };
   
-    return Restaurants.length===0?<Shimmer/>:(
+    return filteredRestaurants.length===0?<Shimmer/>:(
    
     <div className="res-container">
 
@@ -84,24 +77,24 @@ export default Restaurants =()=>{
     <div className="searchbar">
         <input  type="text" name="res" id="restSearch" placeholder="Search"  onChange={(e)=>handleInputChange(e)} />
     </div>
-<div className="filter" onClick={()=>filter()}>
+<div className="filter h-9" onClick={()=>filter()}>
    Filter
 </div>
-<div className="filter" onClick={()=>filter()}>
+<div className="filter h-9" onClick={()=>filter()}>
    Sort
 </div>
 </div>
 
- <div className="restaurant" >
+ <div className="flex flex-wrap" >
   
      {
         
      filteredRestaurants?.map((item,index)=>(
-        <div>
+
   
-        <Link  style={{textDecoration:"none"}} to={"/restaurant/"+item.info.id}> <RestaurantCard restaurant = {item?.info} index={index} cdn={ImagesCDN}/></Link>
+        <Link  key={index} style={{textDecoration:"none"}} to={"/restaurant/"+item.info.id}> <RestaurantCard restaurant = {item?.info} index={index} cdn={ImagesCDN}/></Link>
         
-        </div>
+
      ))
      }
 

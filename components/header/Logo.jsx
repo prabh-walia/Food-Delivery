@@ -1,1 +1,1 @@
-export default Logo =()=> <div className="LogoContainer"><img  className="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeRlElIjZKxOZqwl_9jAlKyXBnIZDiFmOXKwCUx-U-jvvP2sU3xHG020ZwDCXIuRIA_LU&usqp=CAU"/></div>
+export default Logo =()=> <div className="LogoContainer p-5"><img  className="w-12" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeRlElIjZKxOZqwl_9jAlKyXBnIZDiFmOXKwCUx-U-jvvP2sU3xHG020ZwDCXIuRIA_LU&usqp=CAU"/></div>

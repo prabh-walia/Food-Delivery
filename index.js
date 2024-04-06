@@ -1,12 +1,17 @@
-import React from "react";
+import React ,{lazy, Suspense} from "react";
 import  ReactDOM from "react-dom";
 import App from "./components/app";
 import Help from "./components/Help/Help";
 import { createBrowserRouter ,RouterProvider} from "react-router-dom";
 import Restaurants from "./components/Homepage/Restaurants";
 import Homepage from "./components/Homepage/Homepage";
-import RestaurantMenu from "./components/body/Restaurant-View/RestaurantMenu";
-var number = 100
+import Shimmer from "./components/Homepage/shimmer";
+
+
+
+
+const  RestaurantMenu = lazy(()=>import("/components/body/Restaurant-View/RestaurantMenu"))
+
 
 
 const root =  ReactDOM.createRoot(document.getElementById("root"));
@@ -23,7 +28,7 @@ const router = createBrowserRouter([
             ,
             {
                 path:"/restaurant/:resId",
-                element : <RestaurantMenu/>
+                element : <Suspense ><RestaurantMenu/></Suspense>
                 
             }
         ]

@@ -9,7 +9,7 @@ export default RestaurantCard=({restaurant,index,cdn})=>{
 
     return (
 
-        <div className="res-card">
+        <div className="res-card hover:border-slate-900">
             <div className="res-image" >
             <img style={{width:"100%" , height:"100%", borderRadius:"5%"}} src={cdn + restaurant.cloudinaryImageId} alt="" />
 
