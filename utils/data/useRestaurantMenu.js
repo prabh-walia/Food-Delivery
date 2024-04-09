@@ -2,8 +2,11 @@ import { useState,useEffect } from "react";
 export const  useRestaurantMenu =(resId)=>{
     const [resInfo,setResInfo]= useState({});
     const [offers,setOffers]=useState([]);
+    const [menuCategory,setMenuCategory] = useState([])
+    
     useEffect(()=>{
         fetchData();
+
     
        },[])
        fetchData= async ()=>{
@@ -13,9 +16,16 @@ export const  useRestaurantMenu =(resId)=>{
 
         setResInfo(json);
         setOffers(json?.data?.cards[3]?.card.card?.gridElements.infoWithStyle.offers)
+        const category=  json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>{
+           return  c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+         
+                            })
+                            console.log("cat=",category);
+                            setMenuCategory(category)
     }
 
 
 
-    return [resInfo,offers,setResInfo];
+
+    return [resInfo,offers,menuCategory];
 }

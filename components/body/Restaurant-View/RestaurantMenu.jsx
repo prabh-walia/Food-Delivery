@@ -4,11 +4,18 @@ import { useParams } from "react-router-dom";
 import Shimmer from "../../Homepage/shimmer";
 import MenuCard from "./MenuCard";
 import { useRestaurantMenu } from "../../../utils/data/useRestaurantMenu";
+import MenuCategory from "./menu-category";
 export default RestaurantMenu =()=>{
 
     const { resId } = useParams()
-    const [resInfo,offers,setResInfo] = useRestaurantMenu(resId)
+    const [activeIndex, setActiveIndex] = useState(0);
 
+    const toggleAccordion = (index) => {
+      setActiveIndex(index === activeIndex ? null : index);
+    };
+
+    const [resInfo,offers,categories] = useRestaurantMenu(resId)
+    console.log("categories =",categories);
 
     return Object.keys(resInfo).length==0?<Shimmer/>:(
         <div style={{paddingLeft:"15em",paddingRight:"15em"}}>
@@ -70,14 +77,16 @@ export default RestaurantMenu =()=>{
                   </div>
 
               </div>
-              <div className="menu_list">
-                     {
-                          resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards?.map((menu,index)=>(
-
-                     <MenuCard  data ={menu}/>
-                          ))
-                     }
+              <div className="category_menu">
+                { 
+             categories?.map((category,index)=>(
+     <MenuCategory category={category} index={index} showItem={toggleAccordion} show={activeIndex==index?true:false}/>
+             
+             ))
+                
+                }
               </div>
+
           </div>
             
         </div>

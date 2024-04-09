@@ -10,7 +10,7 @@ export const useRestaurants =()=>{
 
        const json =await res.json();
 
-      setRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
+      setRestaurant(json.data.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants)
 
      
       
