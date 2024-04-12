@@ -1,7 +1,16 @@
+import {useDispatch} from "react-redux";
+import { addItem } from "../../../utils/data/cartSlice";
+import Counter from "./counter";
+import { useState } from "react";
 export default MenuCard =(props)=>{
     const {data}=props;
-    console.log("data=",data);
+    const dispatch= useDispatch();
+   const [added,setAdded] = useState(false);
     const ImagesCDN ="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
+    const addToCart =(item)=>{
+     dispatch(addItem(item))
+     setAdded(true)
+    }
 
     return (
         <div className="menu_card">
@@ -19,9 +28,11 @@ export default MenuCard =(props)=>{
             </div>
             <div className="menu_img_section">
                 <img src={ImagesCDN+data?.card?.info?.imageId} alt=""  style={{width:"100%",height:"8em",borderRadius:"1em"}}/>
-              <div className="submit" style={{background:"white",fontWeight:"600", color:"darkgreen",width:"7em",position:"relative",bottom:"2em",left:"10%",zIndex:"1",boxShadow: "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px"}}>
+              {added==false?<div onClick={()=>addToCart(data)} className="submit" style={{background:"white",fontWeight:"600", color:"darkgreen",width:"7em",position:"relative",bottom:"2em",left:"10%",zIndex:"1",boxShadow: "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px"}}>
                   ADD
-              </div>
+              </div>:
+              <Counter/>
+              }
                 
             </div>
         </div>

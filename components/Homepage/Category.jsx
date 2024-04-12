@@ -88,7 +88,7 @@ const FoodCategory=(props)=>{
     return (
    
             
-            <div><img className=" h-40  w-44" key={props.index}  src={props.item.file} alt="" /></div>
+            <div><img className=" h-40  w-36 mix-blend-multiply" key={props.index}  src={props.item.file} alt="" /></div>
    
     )
 }

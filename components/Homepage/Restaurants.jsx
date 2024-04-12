@@ -58,7 +58,7 @@ console.log("filter",filteredRestaurants)
       
       };
   
-    return filteredRestaurants.length===0?<Shimmer/>:(
+    return filteredRestaurants?.length===0?<Shimmer/>:(
    
     <div className="res-container">
 

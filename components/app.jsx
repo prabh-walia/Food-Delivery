@@ -43,3 +43,8 @@ const themes = ["dark","light"]
 
 
 }
+//loadash
+//debouncing
+//throttling
+//react portal
+// pollyfill
