@@ -53,6 +53,7 @@ export default Category =()=>{
     ]
     const [inc,setInc] = useState(0);
     return (
+        <div className="px-28 pt-28"> 
         <div className="category">
             <div className="flex">
             <div className="heading"> Whats on your mind ? </div>
@@ -77,6 +78,7 @@ export default Category =()=>{
               
             
            </div>
+        </div>
         </div>
     )
 }

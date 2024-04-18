@@ -2,9 +2,12 @@ import { useSelector,useDispatch } from "react-redux"
 
 import CartItem from "./cart-Item";
 import { clearCart } from "../../../utils/data/cartSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default Cart =()=>{
 const cart = useSelector((store)=>store.cart.item);
+
+
+    const Cart = Array.from(new Set(cart));
 const dispatch = useDispatch();
 const [paymentStatus,setPaymentStatus]=useState(false)
 console.log("cart->",cart)
@@ -13,16 +16,20 @@ const total = cart.reduce((acc,item)=>{
 return acc+ price 
 
 },0)
+
+
+
 console.log("total=>",total);
 const clearCartt =()=>{
     console.log("in clear cart");
   dispatch(clearCart())
+
 }
  const initAudio = () => {
     const targetAudio = document.getElementsByClassName("audioBtn")[0];
     console.log("init audio , ",targetAudio);
     targetAudio.play();
-
+    clearCartt()
     setPaymentStatus(true)
   };
 
@@ -54,8 +61,8 @@ const clearCartt =()=>{
             <div className="cart  h-96 bg-slate-50 ">
                 {cart.length>0&&<div className="text-end px-4 pt-2"><button  className=" text-sm p-2 m-1 border-red-400 border-2 text-red-500" onClick={()=>clearCartt()}>Clear</button></div>}
         <div className=" h-64 overflow-y-auto">{
-            cart.map((item)=>(
-              <CartItem data = {item}/>
+            Cart.map((item)=>(
+              <CartItem data = {item} />
                 
             ))
         }

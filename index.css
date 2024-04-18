@@ -34,8 +34,8 @@ position:fixed
 .Body {
     height:100em;
     background: #f1f1f1;
-    padding:8em;
-    padding-top:7em
+ 
+
 }
 .heading {
     font-size: 1.5em;
@@ -82,19 +82,30 @@ position:fixed
 
 .prev-next-buttons {
     display: flex;
-    margin-left: 1em;
+    width: 5em;
+    justify-content: space-between;
 
+    margin-left: 1em;
+  
 }
 .slide-button  {
-padding:0.7em;
+
     background-color: #fff;
     cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+padding-top: 0.2em;
+color:#5e5d5d;
+    border-radius: 1em;
 }
 .filter {
   width: 6em;
 
     background: #fff;
     border-radius: 0.7em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     cursor: pointer;
    text-align: center;
    padding-top: 0.5em;
@@ -117,6 +128,7 @@ padding:0.7em;
     border: 1px solid #d5d3d3;
     padding-left: 3%;
     border-radius: 0.7em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .shimmer_container {
     padding:1em;
@@ -124,17 +136,17 @@ padding:0.7em;
     flex-wrap: wrap;
 }
 .shimmer_card {
-    width:18em;
+    width:16em;
     height:18em;
     border-radius:10%;
     margin:1em;
     background-color: #cac7c7;
 }
 .shimmerhead {
-    margin-top: 1em;
+    margin-top: 2em;
     background-color: #cac7c7;
   height:2em;
-  width: 14em;
+  width: 24em;
 }
 .Modal_Contaner {
     background-color: #fff;

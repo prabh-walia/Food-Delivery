@@ -1,13 +1,18 @@
 import { useState , useEffect } from "react"
 import Deal from "./deal";
 import { useParams } from "react-router-dom";
-import Shimmer from "../../Homepage/shimmer";
+import Shimmer from "./shimmer";
 import MenuCard from "./MenuCard";
 import { useRestaurantMenu } from "../../../utils/data/useRestaurantMenu";
 import MenuCategory from "./menu-category";
-export default RestaurantMenu =()=>{
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
+export default RestaurantMenu =()=>{
+    const cart = useSelector((store)=>store.cart.item)
+    const Cart = Array.from(new Set(cart));
     const { resId } = useParams()
+
     const [activeIndex, setActiveIndex] = useState(0);
 
     const toggleAccordion = (index) => {
@@ -80,7 +85,7 @@ export default RestaurantMenu =()=>{
               <div className="category_menu">
                 { 
              categories?.map((category,index)=>(
-     <MenuCategory category={category} index={index} showItem={toggleAccordion} show={activeIndex==index?true:false}/>
+     <MenuCategory  category={category} index={index} showItem={toggleAccordion} show={activeIndex==index?true:false}/>
              
              ))
                 
@@ -90,6 +95,12 @@ export default RestaurantMenu =()=>{
           </div>
             
         </div>
+        
+        <div className="flex justify-center"> { cart.length>0&&<div className=" text-sm font-semibold px-4 text-slate-50 flex justify-between items-center fixed  w-1/2 h-12  bg-lime-600 bottom-0 z-10">
+            <span> {Cart.length} item added</span>
+            <Link to={"/cart"}><span className=" cursor-pointer"> VIEW CART</span></Link>
+            </div>}</div>
+
         </div>
     )
 }

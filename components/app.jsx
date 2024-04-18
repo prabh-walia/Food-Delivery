@@ -7,9 +7,10 @@ import { Outlet } from "react-router-dom"
 import { userContext } from "../utils/data/userContext"
 import { themeContext } from "../utils/data/themeContext"
 import { useState } from "react"
-import { Provider } from "react-redux"
+import { Provider, useSelector } from "react-redux"
 
 import { store } from "../utils/data/appStore"
+import RootBody from "./root-body"
 
 
 export default  function app (){
@@ -22,6 +23,7 @@ const themes = ["dark","light"]
      const changeTheme=()=>{
          setTheme(themes.indexOf(theme)==0?themes[1]:themes[0])
      }
+    
     return (
       <Provider store={store}>
       <div id="app">
@@ -29,9 +31,10 @@ const themes = ["dark","light"]
        <userContext.Provider value ={{userLoggedIn : username,setusername}}>
          <Header status = {status}/>
          {
-           status==false ? <div style={{padding:"9em"}}>You are disconnected. Please check your internet connection</div> : <Outlet/>
+           status==false ? <div style={{padding:"9em"}}>You are disconnected. Please check your internet connection</div> : <RootBody/>
+           
          }
- 
+
          <Footer/>
 </userContext.Provider>
 </themeContext.Provider>

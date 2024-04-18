@@ -9,11 +9,11 @@ import { useRestaurants } from "../../utils/data/useRestaurants"
 
 
 
-export default Restaurants =()=>{
+export default Restaurants =(props)=>{
 
 
-   const [Restaurants,setRestaurants] = useRestaurants();
-   const [filteredRestaurants,setFilteredRestaurant] = useRestaurants();
+   const [Restaurants,setRestaurants,filteredRestaurants,setFilteredRestaurant] = useRestaurants();
+
   
     const [ searchterm,setSearch]=useState('');
     const [filterDialogOpen,setFilterDialog]=useState(false)
@@ -29,7 +29,12 @@ console.log("filter",filteredRestaurants)
 
         search(searchterm);
       },[searchterm])
-      
+      useEffect(()=>{
+        if(Restaurants.length>0){
+           props.loaded(true);
+
+        }
+      },[Restaurants])
  
 
    const  filter=()=>{

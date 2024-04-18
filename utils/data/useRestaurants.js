@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 export const useRestaurants =()=>{
     const [Restaurants,setRestaurant] = useState([]);
+    const [filteredRes,setFilteredRes]= useState([])
 
     useEffect(()=>{
         fetchData();
@@ -11,7 +12,7 @@ export const useRestaurants =()=>{
        const json =await res.json();
 
       setRestaurant(json.data.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants)
-
+      setFilteredRes(json.data.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants)
      
       
     }
@@ -19,5 +20,5 @@ export const useRestaurants =()=>{
     
 
 
-    return  [Restaurants,setRestaurant]
+    return  [Restaurants,setRestaurant,filteredRes,setFilteredRes]
 }

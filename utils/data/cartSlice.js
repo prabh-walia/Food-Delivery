@@ -4,14 +4,18 @@ const cartSlice=createSlice(
     {
         name:"cart",
         initialState:{
-            item:[]
+            item:[
+                
+            ]
         },
         reducers:{
             addItem:(state,action)=>{
               state.item.push(action.payload)
             },
             removeItem :(state,action)=>{
-                state.item.pop()
+                const itemToremove = action.payload?.card.info.id;
+                console.log("itemss",action.payload)
+                state.item = state.item.filter((item)=>item.card.info.id!== itemToremove)
 
             },
             clearCart:(state)=>{
