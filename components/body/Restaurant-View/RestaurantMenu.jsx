@@ -1,5 +1,5 @@
 import { useState , useEffect } from "react"
-import Deal from "./Deal";
+import DealCard from "./deal";
 import { useParams } from "react-router-dom";
 import Shimmer from "./shimmer";
 import MenuCard from "./MenuCard";
@@ -66,7 +66,7 @@ export default RestaurantMenu =()=>{
               </div>
               <div className="deal_body" >
             {  offers?.map((offer)=>(
-             <Deal data = {offer}/>
+             <DealCard data = {offer}/>
               ))
             }
 
