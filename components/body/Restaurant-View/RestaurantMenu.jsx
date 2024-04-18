@@ -1,5 +1,5 @@
 import { useState , useEffect } from "react"
-import Deal from "./deal";
+import Deal from "./Deal";
 import { useParams } from "react-router-dom";
 import Shimmer from "./shimmer";
 import MenuCard from "./MenuCard";
