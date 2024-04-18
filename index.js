@@ -7,11 +7,11 @@ import Restaurants from "./components/Homepage/Restaurants";
 import Homepage from "./components/Homepage/Homepage";
 import Shimmer from "./components/Homepage/shimmer";
 import Cart from "./components/body/Cart/cart";
+import RestaurantMenu from "./components/body/Restaurant-View/RestaurantMenu";
 
 
 
-
-const  RestaurantMenu = lazy(()=>import("/components/body/Restaurant-View/RestaurantMenu"))
+// const  RestaurantMenu = lazy(()=>import("/components/body/Restaurant-View/RestaurantMenu"))
 
 
 
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             ,
             {
                 path:"/restaurant/:resId",
-                element : <Suspense ><RestaurantMenu/></Suspense>
+                element : <RestaurantMenu/>
                 
             },
             {
