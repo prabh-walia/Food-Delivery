@@ -7,6 +7,7 @@ import { CategoryShimmer } from "./shimmer"
 export default Body=()=>{
 const [res,setRes]=useState(false);
 const [loading, setLoading] = useState(true);
+const [categories,setCategories ]= useState([])
 useEffect(() => {
     // Simulate loading delay
     const timeout = setTimeout(() => {
@@ -18,13 +19,16 @@ useEffect(() => {
 useEffect(()=>{
  console.log("res true=>",res)
 },[res])
+const setCategory=(cat)=>{
+    setCategories(cat)
+}
     return (
         <div className="Body">
   
-   {res?<Category/>:<CategoryShimmer/>}
+   {res?<Category categories= {categories}/>:<CategoryShimmer/>}
              <div className="px-28">
       
-             <Restaurants loaded={setRes}/>
+             <Restaurants loaded={setRes} getCategories={setCategory}/>
              
 </div>
              {/* <Restaurant/> */}

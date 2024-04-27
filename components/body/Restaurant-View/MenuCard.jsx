@@ -39,9 +39,9 @@ export default MenuCard =(props)=>{
                      {data?.card?.info?.name}
                 </div>
                 <div className="menuItem_price">
-               <span>&#8377;</span>  {data?.card?.info?.price/100}
+               <span>&#8377;</span>  {data?.card?.info?.price/100 ||data?.card?.info?.defaultPrice/100 }
                 </div>
-                <div className="menuItem_description" >
+                <div className="menuItem_description max-h-12 text-wrap   overflow-ellipsis overflow-hidden" >
                 {data?.card?.info?.description}
                 </div>
 

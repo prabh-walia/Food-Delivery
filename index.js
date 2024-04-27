@@ -8,8 +8,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Shimmer from "./components/Homepage/shimmer";
 import Cart from "./components/body/Cart/cart";
 import RestaurantMenu from "./components/body/Restaurant-View/RestaurantMenu";
-
-
+import Collection from "./components/body/Collection/collection";
 
 // const  RestaurantMenu = lazy(()=>import("/components/body/Restaurant-View/RestaurantMenu"))
 
@@ -35,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path:"/cart",
                 element : <Cart/>
+            },
+            {
+                path:"/collections/:params",
+                element:<Collection/>
             }
         ]
     },

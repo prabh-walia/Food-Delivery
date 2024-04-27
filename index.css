@@ -137,16 +137,16 @@ color:#5e5d5d;
 }
 .shimmer_card {
     width:16em;
-    height:18em;
+    height:16em;
     border-radius:10%;
-    margin:1em;
+    margin:1.2em;
     background-color: #cac7c7;
 }
 .shimmerhead {
     margin-top: 2em;
     background-color: #cac7c7;
   height:2em;
-  width: 24em;
+
 }
 .Modal_Contaner {
     background-color: #fff;

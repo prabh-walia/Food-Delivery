@@ -14,7 +14,7 @@ export default RestaurantCard=({restaurant,index,cdn})=>{
             <img style={{width:"100%" , height:"100%", borderRadius:"5%"}} src={cdn + restaurant.cloudinaryImageId} alt="" />
 
             </div>
-            <div className="res-name" style={{padding:"0.4em",fontWeight:"600",fontFamily:"sans-serif",fontSize:"1.3em",color:"#000",textDecoration: 'none'}}>
+            <div className="res-name text-nowrap overflow-ellipsis overflow-hidden" style={{padding:"0.4em",fontWeight:"600",fontFamily:"sans-serif",fontSize:"1.3em",color:"#000",textDecoration: 'none'}}>
                 {restaurant.name}
    
             </div>

@@ -11,10 +11,24 @@ export default MenuItems = () =>{
     const cartItem = useSelector((store)=>store.cart.item);
     const uniqueCartItems = Array.from(new Set(cartItem));
 
- 
-  
+
+
+    const fetchLocationName = async (lat,lng) => {
+      console.log("in fth nam");
+      await fetch(
+        'https://www.mapquestapi.com/geocoding/v1/reverse?key=API-Key&location='+lat+'%2C'+lng+'&outFormat=json&thumbMaps=false',
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          console.log(
+            'ADDRESS GEOCODE is BACK!! => ' + JSON.stringify(responseJson),
+          );
+        });
+    };
+
     return (
-    <div className="navItems"><ul className="flex">
+    <div className="navItems "><ul className="flex">
+  
         <li className="">Search</li>
         <li>
            <Link to="/help">Help</Link> </li>

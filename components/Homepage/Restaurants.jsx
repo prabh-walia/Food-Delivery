@@ -6,13 +6,13 @@ import Filters from "./Filters"
 import { Link } from "react-router-dom"
 import { ImagesCDN } from "../../utils/data/constants"
 import { useRestaurants } from "../../utils/data/useRestaurants"
-
+import { useLocations } from "../../utils/data/useLocation"
 
 
 export default Restaurants =(props)=>{
 
-
-   const [Restaurants,setRestaurants,filteredRestaurants,setFilteredRestaurant] = useRestaurants();
+  const [lat,long] = useLocations();
+   const [Restaurants,setRestaurants,filteredRestaurants,setFilteredRestaurant,categories,title] = useRestaurants(lat,long);
 
   
     const [ searchterm,setSearch]=useState('');
@@ -34,8 +34,11 @@ console.log("filter",filteredRestaurants)
            props.loaded(true);
 
         }
+        props.getCategories(categories)
       },[Restaurants])
  
+
+
 
    const  filter=()=>{
        setFilterDialog(true)
@@ -46,6 +49,9 @@ console.log("filter",filteredRestaurants)
     }
     useEffect(()=>{
       setFilterDialog(false);
+     const  filteredRes=filteredRestaurants.filter((res)=>{
+               
+      })
       
     },[filters])
     const search = (term) => {
@@ -74,7 +80,7 @@ console.log("filter",filteredRestaurants)
           }
 
     <div style={{display:"flex"}}>
-     <div className="heading"> Restaurants in Indore</div>
+     <div className="heading"> {title} </div>
         
 
 </div>
