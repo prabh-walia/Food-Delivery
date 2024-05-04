@@ -49,9 +49,30 @@ console.log("filter",filteredRestaurants)
     }
     useEffect(()=>{
       setFilterDialog(false);
-     const  filteredRes=filteredRestaurants.filter((res)=>{
-               
+ 
+console.log("filtersss", Object.keys(filters));
+      Object.keys(filters).map((filter)=> {
+   console.log("filterrrrr=",filter);
+        if(filter == "Sort"){
+           if(filters[filter]=="Ratings"){
+
+           }
+        }
+        if(filter == "Cuisines"){
+          console.log("cusines")
+          filters[filter].map((fil)=>{
+            console.log("fill",fil);
+            setFilteredRestaurant(Restaurants.filter((res)=>res.info.cuisines.includes(fil)))
+          })
+        }
+        if(filter == "Ratings"){
+            filters[filter].map((fil)=>{
+              console.log("parse",parseFloat(fil))
+             setFilteredRestaurant( Restaurants.filter((Res)=>parseFloat(Res.info.avgRating) >= parseFloat(fil)))
+            })
+        }
       })
+    
       
     },[filters])
     const search = (term) => {
@@ -69,13 +90,13 @@ console.log("filter",filteredRestaurants)
       
       };
   
-    return filteredRestaurants?.length===0?<Shimmer/>:(
+    return Restaurants?.length===0?<Shimmer/>:(
    
     <div className="res-container">
 
          {
          filterDialogOpen===true && <div style={{position:"fixed",top:"22%",left:"25%"}}>
-          <Filters data={myMap} sendFilters = {getfilters} ></Filters>
+          <Filters data={myMap} sendFilters = {getfilters}  filter ={filters}></Filters>
           </div>
           }
 
@@ -108,13 +129,18 @@ console.log("filter",filteredRestaurants)
 
      ))
      }
+     {
+      filteredRestaurants.length==0&&<div className="flex w-full h-24 justify-center items-center"><div> No Result Found </div></div>
+     }
 
 </div>
  
        
 
     </div>
+    
     )
+ 
 }
 
 

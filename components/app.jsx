@@ -18,7 +18,7 @@ export default  function app (){
    const status = useOnlineStatus();
 
 const [username,setusername]=useState("prabh")
-const themes = ["dark","light"]
+const themes = ["light","dark"]
      const [theme,setTheme]=useState(themes[0])
      const changeTheme=()=>{
          setTheme(themes.indexOf(theme)==0?themes[1]:themes[0])

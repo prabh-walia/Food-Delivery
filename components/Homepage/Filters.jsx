@@ -3,8 +3,8 @@ export default Filter =(props)=>{
 console.log("props-",props);
 const keys=Array.from(props.data.keys());
 const [selectedKey,setSelectedKey]=useState("Sort");
-
-const [filteredValues,setFilteredValues]=useState({});
+const [filters,setFilters]=useState();
+const [filteredValues,setFilteredValues]=useState(props.filters|| {});
 const values= props.data?.get(selectedKey);
 console.log("values=:",values);
 const clearFilter=()=>{
@@ -52,8 +52,10 @@ else {
 ;
 }
 useEffect(()=>{
-    console.log("filter ",filteredValues)
-},[filteredValues])
+    console.log("filterws",filters)
+setFilteredValues(props.filter)
+ 
+},[])
     return (
         <div className="Modal_Contaner">
 

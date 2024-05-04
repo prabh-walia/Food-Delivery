@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { useCategory } from "../../../utils/data/useCategory";
 import { ImagesCDN } from "../../../utils/data/constants";
 import Shimmer from "../../Homepage/shimmer";
@@ -8,20 +8,66 @@ export default  Collection =()=>{
 
 
 const [ col ] = useCategory()
+const [res,setres]=useState()
+const[filterRes,setFilterRes]=useState(res)
+useEffect(()=>{
+    setres(col?.data?.cards.filter((card)=>card?.card?.relevance))
+    setFilterRes(col?.data?.cards.filter((card)=>card?.card?.relevance))
+
+},[col])
  const [selected,setSelected]=useState([]);
-console.log("col=>",col);   
+console.log("col=>",col);  
+useEffect(()=>{
+    console.log("doneo");
+ selected.map((filter)=>{
+    if(filter=="Pure Veg"){
+        setFilterRes(res.filter((res)=>res.card.card.info.veg==true))
+        console.log(res[0].card.card.info.veg==true);
+         }
+         if(filter=="Less than 30 mins"){
+            setFilterRes(res.filter((res)=>res.card?.card?.sla?.deliveryTime<=30))
+              }
+              if(filter =="Rs300-Rs600"){
+                setFilterRes(res.filter((res)=>parseInt(res?.card?.card?.info?.costForTwo?.replace(/[^\d]/g, ''))<601&&parseInt(res.card.card.info.costForTwo?.replace(/[^\d]/g, ''))>299))
+                console.log("matdch", res[0]?.card?.card?.info?.costForTwo)
+       
+              }
+              if(filter =="Less than Rs300"){
+                setFilterRes(res.filter((res)=>parseInt(res.card.card?.info?.costForTwo?.match(/\d+/)[0])<300))
+              
+       
+              }
+          
+ })
+ if(selected.length==0){
+    console.log("selected==");
+    setFilterRes(res)
+  }
+},[selected]) 
 selectFilter=(widget)=>{
+
+  if(selected.filter((s)=>s==widget).length==0){
+    setSelected([...selected,widget])
+    applyFilter(widget)
     console.log("select");
- setSelected([...selected,widget])
+  }
+
 }
+applyFilter=(filter)=>{
+    console.log("in filter a[[;u");
+
+}
+
 removeFilter =(event,widget)=>{
     console.log("rekove");
     event.stopPropagation();
     setSelected(selected.filter((s)=>s!=widget))
 }
 const filters= ["Pure Veg","Less than 30 mins","Rs300-Rs600","Less than Rs300"]
-     const res= col?.data?.cards.filter((card)=>card?.card?.relevance)
+
   console.log("ress=",res);
+
+
     return (
    
 <div className="pt-28 pb-24 px-20">
@@ -59,12 +105,15 @@ const filters= ["Pure Veg","Less than 30 mins","Rs300-Rs600","Less than Rs300"]
              <div className="flex gap-4 flex-wrap mt-5">
           {
                
-                res?.map((res,index)=>(
+              filterRes?.map((res,index)=>(
                     <div className="">
                         <Link  key={index} style={{textDecoration:"none"}} to={"/restaurant/"+res.card.card.info.id}> <RestaurantCard restaurant ={res.card.card.info} cdn={ImagesCDN}/></Link>
                     </div>
                 ))
-            
+         
+          }
+          {
+               res.length==0&&<div className=" align-middle">No result found</div>
           }
           </div>
           </div>

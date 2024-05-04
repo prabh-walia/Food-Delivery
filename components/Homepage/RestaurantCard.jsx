@@ -11,20 +11,20 @@ export default RestaurantCard=({restaurant,index,cdn})=>{
 
         <div className="res-card hover:border-slate-900">
             <div className="res-image" >
-            <img style={{width:"100%" , height:"100%", borderRadius:"5%"}} src={cdn + restaurant.cloudinaryImageId} alt="" />
+            <img style={{width:"100%" , height:"100%", borderRadius:"5%"}} src={cdn + restaurant?.cloudinaryImageId} alt="" />
 
             </div>
             <div className="res-name text-nowrap overflow-ellipsis overflow-hidden" style={{padding:"0.4em",fontWeight:"600",fontFamily:"sans-serif",fontSize:"1.3em",color:"#000",textDecoration: 'none'}}>
-                {restaurant.name}
+                {restaurant?.name}
    
             </div>
 
             <div className="res-rating" style={{paddingLeft:"0.4em",fontFamily:"sans-serif",fontSize:"0.9em",color:"#000"}}>
-            rating :{restaurant.avgRating}
+            rating :{restaurant?.avgRating}
                 
                 </div>
                           <div className="res-time"style={{paddingLeft:"0.4em",fontFamily:"sans-serif",fontSize:"0.9em",color:"#5e5d5d"}}>
-            {restaurant.sla.slaString}
+            {restaurant?.sla.slaString}
                 </div>
                 <div className="res-cusines text-nowrap overflow-ellipsis overflow-hidden "style={{paddingLeft:"0.4em", color:"#5e5d5d",fontSize:"0.8em",fontFamily:"sans-serif",color:"#000"}}>
                 {restaurant.cuisines.join(", ")}
